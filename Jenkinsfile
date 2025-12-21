@@ -9,8 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Replace with your HTTPS GitHub URL
-                git branch: 'main', url: 'https://github.com/YOUR_USERNAME/calculator-app.git'
+                git branch: 'main', url: 'https://github.com/hady-potter/simple-calculator-app.git'
             }
         }
 
@@ -28,14 +27,9 @@ pipeline {
             }
         }
 
-        stage('Deploy (Simulation)') {
+        stage('Deploy') {
             steps {
                 echo "Deploying application (simulation)..."
-                // Stop any existing app
-                sh 'pkill -f calculator || true'
-                // Start new app in background
-                sh "nohup java -jar ${JAR_FILE} > app.log 2>&1 &"
-                echo "Application deployed! Access it at http://localhost:8080/add?a=1&b=2"
             }
         }
     }
